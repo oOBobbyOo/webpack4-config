@@ -1,0 +1,11 @@
+body {
+  background-color: #000;
+  color: #fff;
+  background: url(../images/100.jpg) no-repeat center;
+}
+
+.bo {
+  width: 200px;
+  height: 200px;
+  background: url(../images/test.png) no-repeat center;
+}
