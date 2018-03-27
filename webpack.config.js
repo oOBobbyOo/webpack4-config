@@ -7,7 +7,7 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: "./src/app.js"
+    index: "./src/index.js"
   },
   output: {
     filename: "[name].bundle.js",
@@ -43,13 +43,27 @@ module.exports = {
       use: ["file-loader"]
     }]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          // test: /react|angluar|lodash/,
+          // test: path.resolve(__dirname, "node_modules"),
+          chunks: "initial",
+          minChunks: 1,
+          name: "commons",
+          enforce: true
+        }
+      }
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
-      title: "hot Management"
+      title: "index"
     }),
     new ExtractTextPlugin({
-      filename: "bundle.css",
+      filename: "css/style.bundle.css",
       disable: false,
       allChunks: true
     }),
